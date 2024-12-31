@@ -1,7 +1,12 @@
 import React from 'react';
 import './ShoppingCart.css'; 
+import { useSelector,useDispatch } from 'react-redux';
+import { removeItemFromCart,clearCart } from './CartSlice';
 
 const ShoppingCart = () => {
+const dispatch = useDispatch()
+const cartItems = useSelector(state => state.cart.cartItems);
+const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
     <>
